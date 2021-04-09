@@ -7,6 +7,12 @@ from selenium import webdriver
 
 driver = webdriver.Chrome()
 
+
+def update_csv():
+    df = pd.read_csv("file.csv", names=['Doctor', 'Work time', 'Address', 'Rating'])
+    df.to_csv("result.csv", index=False)
+
+
 # get data from a page
 def get_data(drive):
     html = drive.page_source
@@ -45,29 +51,19 @@ sleep(3)
 # click on checkbox "Hunde"
 driver.find_element_by_xpath('//*[@id="app"]/div/main/div/div[4]/div[1]/section/div[1]/fieldset/div/div[1]/div[1]/label/input').click()
 sleep(2)
-# scroll down a page
-driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-sleep(2)
-# cal function get_data
-get_data(driver)
-# click on pagination , next page
-driver.find_element_by_css_selector('#search-results-pane-tab1 > div.pagination-group > nav > ul > li:nth-child(9) > a > span').click()
-sleep(3)
-# scroll down a page
-driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-sleep(2)
-# call a function get_data
-get_data(driver)
-# click on pagination , next page
-driver.find_element_by_css_selector('#search-results-pane-tab1 > div.pagination-group > nav > ul > li:nth-child(9) > a > span').click()
-sleep(3)
-# scroll down a page
-driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-sleep(2)
-# call function get_data
-get_data(driver)
-sleep(2)
+# pages counter
+counter = 3
+while counter > 0:
+    # scroll down a page
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+    sleep(2)
+    get_data(driver)
+    # click on nex page
+    driver.find_element_by_css_selector('#search-results-pane-tab1 > div.pagination-group > nav > ul > li:nth-child(9) > a > span').click()
+    sleep(3)
+    counter -= 1
 
+# update a csv file
+update_csv()
 # driver quit
 driver.quit()
-
