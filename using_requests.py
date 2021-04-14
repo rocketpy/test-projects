@@ -1,6 +1,8 @@
+import csv
 import requests
 from bs4 import BeautifulSoup
 from requests.exceptions import HTTPError
+# from multiprocessing import Pool
 
 
 useragent = 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
@@ -15,33 +17,48 @@ def write_csv(data):
 
 
 def get_html(url):
-    useragent = {'User-Agent': choice(useragents)}
     r = requests.get(url, headers=headers, timeout=3)
     # response.content
-    return r.text  #
+    # response.json()
+    return r.text
 
 
 def get_data(html):
     soup = BeautifulSoup(html, 'lxml')
-    # h1 = soup.find('div', id='home-welcome').find('header').find('h1').text
-    return
+    # return
 
 
 def main():
-    url = 'https://www.zooplus.de/tierarzt/results?animal_99=true'
-    for url in 
-    try:
-        response = requests.get(url)
-        response.raise_for_status()
-    except HTTPError as http_err:
-        print(f'HTTP error occurred: {http_err}')
-    except Exception as err:
-        print(f'Other error occurred: {err}')
-    else:
-        print('Success!')
-    # print(get_data(get_html(url)))
+    # url = 'https://www.zooplus.de/tierarzt/results?animal_99=true'
+    for i in range(1, 4):
+        try:
+            url = f'https://www.zooplus.de/tierarzt/results?animal_99=true%27&page={i}'
+            response = requests.get(url)
+            response.raise_for_status()
+        except HTTPError as http_err:
+            print(f'HTTP error occurred: {http_err}')
+        except Exception as err:
+            print(f'Other error occurred: {err}')
+        else:
+            print('Success!')
+        # print(get_data(get_html(url)))
 
 
 if __name__ == '__main__':
     main()
+    
+    
 
+"""
+# for multiprocessing
+def make_all(url):
+    text = get_html(url)
+    get_page_data(text)
+
+def main():
+    url = ''
+    urls = [url.format(str(i)) for i in range(1, 4)]
+
+    with Pool(20) as p:  # pools is a process
+        p.map(make_all, urls)  # p.map to every func make_all
+"""
