@@ -9,8 +9,6 @@ useragent = 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
 headers = {'User-Agent': useragent}
 
 
-
-
 def save_cookies(requests_cookiejar, filename):
     with open(filename, 'wb') as f:
         pickle.dump(requests_cookiejar, f)
@@ -36,16 +34,11 @@ def write_csv(data):
         writer.writerow(data)
 
 
-def get_html(url):
-    r = requests.get(url, headers=headers, timeout=3)
-    # response.content
-    # response.json()
-    return r.text
-
-
-def get_data(html):
-    soup = BeautifulSoup(html, 'lxml')
-    # return
+def get_data():
+        with open('data.txt') as json_file:
+        data = json.load(json_file)
+        # print(data)
+        print(json.dumps(data, indent=4, sort_keys=True))
 
 
 def main():
