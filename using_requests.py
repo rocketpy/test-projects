@@ -5,6 +5,16 @@ from requests.exceptions import HTTPError
 # from multiprocessing import Pool
 
 
+def save_cookies(requests_cookiejar, filename):
+    with open(filename, 'wb') as f:
+        pickle.dump(requests_cookiejar, f)
+
+
+# load cookies and do a request
+r = requests.get(url, cookies=load_cookies(filename='cookies'))
+# print(r.json())
+
+
 useragent = 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
 headers = {'User-Agent': useragent}
 
