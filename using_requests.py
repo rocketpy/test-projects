@@ -5,18 +5,28 @@ from requests.exceptions import HTTPError
 # from multiprocessing import Pool
 
 
+useragent = 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
+headers = {'User-Agent': useragent}
+
+
+
+
 def save_cookies(requests_cookiejar, filename):
     with open(filename, 'wb') as f:
         pickle.dump(requests_cookiejar, f)
 
 
+def load_cookies(filename):
+    with open(filename, 'rb') as f:
+        return pickle.load(f)
+
+# save cookies
+r = requests.get(url)
+save_cookies(r.cookies, filename='cookies')        
+
 # load cookies and do a request
 r = requests.get(url, cookies=load_cookies(filename='cookies'))
 # print(r.json())
-
-
-useragent = 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
-headers = {'User-Agent': useragent}
 
 
 def write_csv(data):
