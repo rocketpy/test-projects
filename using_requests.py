@@ -17,6 +17,14 @@ def save_cookies(requests_cookiejar, filename):
 def load_cookies(filename):
     with open(filename, 'rb') as f:
         return pickle.load(f)
+    
+    
+"""
+s = requests.Session()
+s.get('https://')
+r = s.get("https://")
+print(r.text)
+"""
 
 # save cookies
 r = requests.get(url)
