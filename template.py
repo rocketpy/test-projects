@@ -3,6 +3,7 @@ from bs4 import BeautifulSoup
 
 
 class WebParser:
+    
     def __init__(self, url):
         self.url = url
         
@@ -12,7 +13,7 @@ class WebParser:
             req = requests.get(self.url)
         except requests.ConnectionError:
             pass
-        if req.stsus_code < 400:
+        if req.status_code < 400:
             return req.content
           
           
@@ -22,7 +23,9 @@ class WebParser:
         
         
     def main(self):
-        pass
+        while True:
+            page = self.get_page()
+            self.get_data(page)
         
         
 if __name__ == '__main__':
