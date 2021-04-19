@@ -1,4 +1,5 @@
 import requests
+import threading
 from bs4 import BeautifulSoup
 
 
@@ -12,23 +13,33 @@ class WebParser:
         try:
             req = requests.get(self.url)
         except requests.ConnectionError:
-            pass
+            return
         if req.status_code < 400:
-            return req.content
+            return req.content  # text
           
           
     def get_data(self, html):
         html = self.page_source
         soup = BeautifulSoup(html, 'lxml')
-        
-        
+        try:
+            el = soup.find('')
+        except (Indexerror, AttributeError):
+            return
+
+
     def main(self):
-        while True:
-            page = self.get_page()
-            self.get_data(page)
+        page = self.get_page()
         
         
 if __name__ == '__main__':
     web_page = WebParse('https://...')
-    web_page.main()
-        
+    # web_page.main()
+    
+    # using threading
+    p_1 = WebParser('https://')
+    p_2 = WebParser('https://')
+    parser_1 = threading.Thread(target=p_1.main)
+    parser_2 = threading.Thread(target=p_2.main)
+    # parser_1.start()
+    # parser_2.start()
+
