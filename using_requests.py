@@ -16,7 +16,12 @@ claims = {
     'httpMethod': 'GET'
 }
 
+import datetime
+# create JWToken
+jwtoken = jwt.generate_jwt(claims, 'My secret', 'HS256', datetime.timedelta(minutes=5))
 
+response = requests.get('http://httpbin.org/get', jwtoken)
+print(response.json())
 """
 
 """
