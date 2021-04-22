@@ -8,6 +8,16 @@ from requests.exceptions import HTTPError
 useragent = 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
 headers = {'User-Agent': useragent}
 # headers = {'accept':'*/*', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'}
+"""
+import python_jwt as jwt
+# Create claims dictionary for generation of JwToken
+claims = {
+    'consumerId': 'My App ID',
+    'httpMethod': 'GET'
+}
+
+
+"""
 
 """
 proxies = {
@@ -17,9 +27,9 @@ proxies = {
 requests.get('http://', proxies=proxies)
 """
 # using proxy
-session = requests.Session()
-session.proxies.update(proxies)
-session.get('http://')
+# session = requests.Session()
+# session.proxies.update(proxies)
+# session.get('http://')
 
 
 def save_cookies(requests_cookiejar, filename):
