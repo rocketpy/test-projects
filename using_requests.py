@@ -2,12 +2,16 @@ import csv
 import requests
 from bs4 import BeautifulSoup
 from requests.exceptions import HTTPError
-# from multiprocessing import Pool
+from requests_jwt import JWTAuth
 
 
 useragent = 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
 headers = {'User-Agent': useragent}
 # headers = {'accept':'*/*', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'}
+
+auth = JWTAuth('MySecretToken')
+requests.get("http://", auth=auth)
+
 """
 import python_jwt as jwt
 # Create claims dictionary for generation of JwToken
