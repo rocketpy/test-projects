@@ -25,6 +25,25 @@ req = s.get(url, headers=headers)
 
 r = s.get("https://")
 
+"""
+def get_req(url):
+    try:
+        res = requests.get(url)
+        return json.dumps(res.json(), indent=4)
+    except Exception as ex:
+        return f"Message: {ex}"
+  
+  
+def post_req(url, data):
+    try:
+        res = requests.post(url, json=data)
+        return json.dumps(res.json(), indent=4)
+    except Exception as ex:
+        return f"Message : {ex}"
+        
+if __name__ == '__main__':
+    main()
+"""
 
 """
 import python_jwt as jwt
