@@ -8,17 +8,21 @@ from requests_jwt import JWTAuth
 useragent = 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
 headers = {'User-Agent': useragent}
 # headers = {'accept':'*/*', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'}
+# head = {'Authorization': 'Bearer {}'.format(myToken)}
 
 auth = JWTAuth('MySecretToken')
 requests.get("http://", auth=auth)
+s = requests.Session()
+req = s.get(url, headers=headers)
+
+r = s.get("https://")
+
 
 """
 import python_jwt as jwt
 # Create claims dictionary for generation of JwToken
-claims = {
-    'consumerId': 'My App ID',
-    'httpMethod': 'GET'
-}
+claims = {'consumerId': 'My App ID',
+          'httpMethod': 'GET'}
 
 import datetime
 # create JWToken
