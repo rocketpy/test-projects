@@ -38,7 +38,7 @@ heads_2 = {'authority': 'www.zooplus.de',
            'referer': 'https://www.zooplus.de/tierarzt/results',
            'sec-ch-ua': 'Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0',
-           'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTkyOTA3NzAsImlhdCI6MTYxOTI4OTg3MH0.zidWmHEk0ZBpGL6MD4WvVRKh5qkwFUEHggGoSBpbPZs',
+           'authorization': '',
            'x-site-id': '1'}
 """
 
