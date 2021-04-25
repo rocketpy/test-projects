@@ -26,6 +26,23 @@ req = s.get(url, headers=headers)
 r = s.get("https://")
 
 """
+s = requests.Session()
+r = s.get(url, headers=heads)
+cookie = r.headers['Set-Cookie']
+
+heads_2 = {'authority': 'www.zooplus.de',
+           'accept': 'application/json',
+           'accept-encoding': 'gzip, deflate, br',
+           'accept-language': 'ru,uk;q=0.9,ru-RU;q=0.8,en-US;q=0.7,en;q=0.6',
+           'cookie': f'{cookie}',
+           'referer': 'https://www.zooplus.de/tierarzt/results',
+           'sec-ch-ua': 'Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
+           'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0',
+           'authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2MTkyOTA3NzAsImlhdCI6MTYxOTI4OTg3MH0.zidWmHEk0ZBpGL6MD4WvVRKh5qkwFUEHggGoSBpbPZs',
+           'x-site-id': '1'}
+"""
+
+"""
 def get_req(url):
     try:
         res = requests.get(url)
