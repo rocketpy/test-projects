@@ -4,6 +4,7 @@ import datetime
 from bs4 import BeautifulSoup
 from requests.exceptions import HTTPError
 from requests_jwt import JWTAuth
+import python_jwt as jwt, jwcrypto.jwk as jwk, datetime
 # import python_jwt as jwt
 
 
