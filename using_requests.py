@@ -1,29 +1,33 @@
 import csv
 import requests
-import datetime
 from bs4 import BeautifulSoup
 from requests.exceptions import HTTPError
 from requests_jwt import JWTAuth
 import python_jwt as jwt, jwcrypto.jwk as jwk, datetime
-# import python_jwt as jwt
 
 
 useragent = 'Mozilla/5.0 (Windows; U; MSIE 9.0; WIndows NT 9.0; en-US)'
 headers = {'User-Agent': useragent}
 # headers = {'accept':'*/*', 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'}
 # head = {'Authorization': 'Bearer {}'.format(myToken)}
-claims = {'consumerId': 'My App ID',
-          'httpMethod': 'GET'}
 
-jwtoken = jwt.generate_jwt(claims, 'My secret', 'HS256', datetime.timedelta(minutes=5))
-response = requests.get('http://httpbin.org/get', jwtoken)
-print(response.json())
-
+# claims = {'consumerId': 'My App ID', 'httpMethod': 'GET'}
+# jwtoken = jwt.generate_jwt(claims, 'My secret', 'HS256', datetime.timedelta(minutes=5))
+# response = requests.get('http://httpbin.org/get', jwtoken)
 # auth = JWTAuth('MySecretToken')
 # requests.get("http://", auth=auth)
-s = requests.Session()
-req = s.get(url, headers=headers)
 
+# creating a jwt token
+key = jwk.JWK.generate(kty='RSA', size=2048)
+payload = {'foo': 'bar', 'wup': 80}
+token = jwt.generate_jwt(payload, key, 'PS256', datetime.timedelta(minutes=5))
+
+heads = {'Accept': '*/*', 'Connection': 'keep-alive',
+         'authorization': f'Bearer {token}',
+         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64; rv:50.0) Gecko/20100101 Firefox/50.0'}
+
+s = requests.Session()
+req = s.get(url, headers=heads)
 r = s.get("https://")
 
 """
