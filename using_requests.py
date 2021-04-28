@@ -19,7 +19,10 @@ headers = {'User-Agent': useragent}
 
 # creating a jwt token
 key = jwk.JWK.generate(kty='RSA', size=2048)
-payload = {'foo': 'bar', 'wup': 80}
+# payload = {'foo': 'bar', 'wup': 80}
+
+payload = {'Alg': 'HS256', 'typ': 'JWT'}
+
 token = jwt.generate_jwt(payload, key, 'PS256', datetime.timedelta(minutes=5))
 
 heads = {'Accept': '*/*', 'Connection': 'keep-alive',
