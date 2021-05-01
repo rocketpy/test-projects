@@ -24,11 +24,18 @@ key = jwk.JWK.generate(kty='RSA', size=2048)
 import jwt
 
 payload = {'Alg': 'HS256', 'typ': 'JWT'}
-encoded = jwt.encode ({'some': 'payload'}, 'secret', algorithm = 'HS256')
-
-# payload = {}
+encoded = jwt.encode ({'some': 'payload'}, 'secret', algorithm='HS256')
 
 token = jwt.generate_jwt(payload, key, 'PS256', datetime.timedelta(minutes=5))
+
+"""
+key = "supersecret"
+payload = {'Alg': 'HS256', 'typ': 'JWT'}
+# encoded = jwt.encode({'some': 'payload'}, 'secret', algorithm='HS256')
+encoded = jwt.encode({"some": "payload"}, key, algorithm="HS256")
+tokn = f'Bearer {encoded}'
+# print(tokn)
+"""
 
 heads = {'Accept': '*/*', 'Connection': 'keep-alive',
          'authorization': f'Bearer {token}',
