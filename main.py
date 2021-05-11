@@ -45,7 +45,7 @@ def get_data(drive):
 
 
 # go to a website
-driver.get("https://www.zooplus.de/tierarzt/results")
+driver.get("https://www...")
 sleep(3)
 # get a cookies
 driver.find_element_by_id('onetrust-accept-btn-handler').click()
