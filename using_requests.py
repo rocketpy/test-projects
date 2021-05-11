@@ -50,7 +50,7 @@ s = requests.Session()
 r = s.get(url, headers=heads)
 cookie = r.headers['Set-Cookie']
 
-heads_2 = {'authority': 'www.zooplus.de',
+heads_2 = {'authority': 'www...',
            'accept': 'application/json',
            'accept-encoding': 'gzip, deflate, br',
            'accept-language': 'ru,uk;q=0.9,ru-RU;q=0.8,en-US;q=0.7,en;q=0.6',
@@ -157,10 +157,10 @@ def get_data():
 
 
 def main():
-    # url = 'https://www.zooplus.de/tierarzt/results?animal_99=true'
+    # url = 'https://www...'
     for i in range(1, 4):
         try:
-            url = f'https://www.zooplus.de/tierarzt/results?animal_99=true%27&page={i}'
+            url = f'https://www...page={i}'
             response = requests.get(url)
             response.raise_for_status()
         except HTTPError as http_err:
@@ -175,18 +175,4 @@ def main():
 if __name__ == '__main__':
     main()
     
-    
 
-"""
-# for multiprocessing
-def make_all(url):
-    text = get_html(url)
-    get_page_data(text)
-
-def main():
-    url = ''
-    urls = [url.format(str(i)) for i in range(1, 4)]
-
-    with Pool(20) as p:  # pools is a process
-        p.map(make_all, urls)  # p.map to every func make_all
-"""
