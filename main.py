@@ -47,6 +47,10 @@ def get_data(drive):
 # go to a website
 driver.get("https://www...")
 sleep(3)
+
+# waiting when elem be downloaded
+# WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".example_selector"))) 
+
 # get a cookies
 driver.find_element_by_id('onetrust-accept-btn-handler').click()
 sleep(3)
