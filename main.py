@@ -46,17 +46,18 @@ def get_data(drive):
 
 # go to a website
 driver.get("https://www...")
-sleep(3)
+
+driver.implicitly_wait(20) 
 
 # waiting when elem be downloaded
 # WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".example_selector"))) 
 
 # get a cookies
 driver.find_element_by_id('onetrust-accept-btn-handler').click()
-sleep(3)
+# sleep(3)
 # click on checkbox "Hunde"
 driver.find_element_by_xpath('//*[@id="app"]/div/main/div/div[4]/div[1]/section/div[1]/fieldset/div/div[1]/div[1]/label/input').click()
-sleep(2)
+# sleep(2)
 # pages counter
 counter = 3  # pages
 while counter > 0:
