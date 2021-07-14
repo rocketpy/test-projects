@@ -44,35 +44,36 @@ def get_data(drive):
     df.to_csv('file.csv', mode='a', index=False, encoding='utf-8', header=False)
 
 
-# go to a website
-driver.get("https://www...")
+def main():
+    # go to a website
+    driver.get("https://www...")
 
-driver.implicitly_wait(20) 
+    driver.implicitly_wait(20) 
 
-# waiting when elem be downloaded
-# WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".example_selector"))) 
+    # waiting when elem be downloaded
+    # WebDriverWait(browser, 5).until(EC.presence_of_element_located((By.CSS_SELECTOR, ".example_selector"))) 
 
-# get a cookies
-driver.find_element_by_id('onetrust-accept-btn-handler').click()
-# sleep(3)
-# click on checkbox "Hunde"
-driver.find_element_by_xpath('//*[@id="app"]/div/main/div/div[4]/div[1]/section/div[1]/fieldset/div/div[1]/div[1]/label/input').click()
-# sleep(2)
-# pages counter
-counter = 3  # pages
-while counter > 0:
-    # scroll down a page
-    driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
-    sleep(2)
-    get_data(driver)
-    counter -= 1
-    if counter > 0:
-        # click on next page
-        driver.find_element_by_css_selector('#search-results-pane-tab1 > div.pagination-group > nav > ul > li:nth-child(9) > a > span').click()
-        sleep(3)
-    else:
-        # update a csv file
-        update_csv()
-        # driver quit
-        driver.quit()
+    # get a cookies
+    driver.find_element_by_id('onetrust-accept-btn-handler').click()
+    # sleep(3)
+    # click on checkbox "Hunde"
+    driver.find_element_by_xpath('//*[@id="app"]/div/main/div/div[4]/div[1]/section/div[1]/fieldset/div/div[1]/div[1]/label/input').click()
+    # sleep(2)
+    # pages counter
+    counter = 3  # pages
+    while counter > 0:
+        # scroll down a page
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+        sleep(2)
+        get_data(driver)
+        counter -= 1
+        if counter > 0:
+            # click on next page
+            driver.find_element_by_css_selector('#search-results-pane-tab1 > div.pagination-group > nav > ul > li:nth-child(9) > a > span').click()
+            sleep(3)
+        else:
+            # update a csv file
+            update_csv()
+            # driver quit
+            driver.quit()
 
